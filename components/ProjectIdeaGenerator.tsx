@@ -14,9 +14,16 @@ const ProjectIdeaGenerator: React.FC = () => {
         setError(null);
         setIdea(null);
 
+        // Fix: Use process.env.API_KEY as per the coding guidelines.
+        const apiKey = process.env.API_KEY;
+        if (!apiKey) {
+            setError("The AI feature is not configured correctly. Please contact the site owner.");
+            setIsLoading(false);
+            return;
+        }
+
         try {
-            // FIX: Replaced import.meta.env.VITE_API_KEY with process.env.API_KEY as per Gemini coding guidelines.
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const ai = new GoogleGenAI({ apiKey });
             const response = await ai.models.generateContent({
                 model: 'gemini-2.5-flash',
                 contents: `

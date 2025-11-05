@@ -22,7 +22,7 @@ const Chatbot: React.FC = () => {
     useEffect(() => {
         if (isOpen && !chatRef.current) {
             try {
-                // FIX: Use process.env.API_KEY as per the guidelines.
+                // FIX: Use process.env.API_KEY as per coding guidelines.
                 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
                 chatRef.current = ai.chats.create({
                     model: 'gemini-2.5-flash',
@@ -61,7 +61,7 @@ const Chatbot: React.FC = () => {
             setMessages(prev => [...prev, modelMessage]);
         } catch (error) {
             console.error("Chatbot error:", error);
-            const errorMessage: Message = { role: 'model', text: "Oops! Something went wrong. Please try again." };
+            const errorMessage: Message = { role: 'model', text: "Oops! Something wrong. Please try again." };
             setMessages(prev => [...prev, errorMessage]);
         } finally {
             setIsLoading(false);

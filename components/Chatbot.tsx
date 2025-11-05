@@ -22,14 +22,8 @@ const Chatbot: React.FC = () => {
     useEffect(() => {
         if (isOpen && !chatRef.current) {
             try {
-                // Fix: Use process.env.API_KEY as per the coding guidelines.
-                const apiKey = process.env.API_KEY;
-                if (!apiKey) {
-                    console.error("API_KEY is not set.");
-                    setMessages([{ role: 'model', text: "The AI feature is not configured correctly. Please contact the site owner." }]);
-                    return;
-                }
-                const ai = new GoogleGenAI({ apiKey });
+                // FIX: Use process.env.API_KEY as per coding guidelines and fix import.meta.env error.
+                const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
                 chatRef.current = ai.chats.create({
                     model: 'gemini-2.5-flash',
                     config: {

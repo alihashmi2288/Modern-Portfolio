@@ -15,7 +15,7 @@ const ProjectIdeaGenerator: React.FC = () => {
         setIdea(null);
 
         try {
-            // FIX: The API key must be obtained from process.env.API_KEY.
+            // FIX: Use process.env.API_KEY as per the guidelines.
             const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
             const response = await ai.models.generateContent({
                 model: 'gemini-2.5-flash',
@@ -48,8 +48,7 @@ const ProjectIdeaGenerator: React.FC = () => {
 
         } catch (err) {
             console.error(err);
-            // FIX: Updated error message to not mention API keys.
-            setError('Failed to generate an idea. Please try again.');
+            setError('Failed to generate an idea. Please check the configuration and try again.');
         } finally {
             setIsLoading(false);
         }

@@ -22,7 +22,7 @@ const Chatbot: React.FC = () => {
     useEffect(() => {
         if (isOpen && !chatRef.current) {
             try {
-                // FIX: The API key must be obtained from process.env.API_KEY.
+                // FIX: Use process.env.API_KEY as per the guidelines.
                 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
                 chatRef.current = ai.chats.create({
                     model: 'gemini-2.5-flash',
@@ -33,7 +33,6 @@ const Chatbot: React.FC = () => {
                 setMessages([{ role: 'model', text: "Hello! I'm Syed's AI assistant. Ask me anything about his skills or projects." }]);
             } catch (error) {
                 console.error("Failed to initialize chatbot:", error);
-                // FIX: Updated error message to not mention API keys or environment variables.
                 setMessages([{ role: 'model', text: "Sorry, I'm having trouble connecting right now. Please try again later." }]);
             }
         }

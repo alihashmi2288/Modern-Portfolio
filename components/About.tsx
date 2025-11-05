@@ -69,7 +69,7 @@ const About = forwardRef<HTMLElement>((props, ref) => {
                     </div>
                 </div>
             </div>
-        </section>
+        </Section>
     );
 });
 

@@ -14,7 +14,7 @@ const ProjectIdeaGenerator: React.FC = () => {
         setError(null);
         setIdea(null);
 
-        // Fix: Use process.env.API_KEY as per the coding guidelines.
+        // Fix: Use process.env.API_KEY as per Gemini API guidelines.
         const apiKey = process.env.API_KEY;
 
         if (!apiKey) {

@@ -21,11 +21,11 @@ const Chatbot: React.FC = () => {
 
     useEffect(() => {
         if (isOpen && !chatRef.current) {
-            // Fix: Use process.env.API_KEY as per the coding guidelines.
+            // Fix: Use process.env.API_KEY as per Gemini API guidelines.
             const apiKey = process.env.API_KEY;
 
             if (!apiKey) {
-                // Fix: Update error message to be consistent with the environment variable change.
+                // Fix: Update error message to reflect the correct environment variable.
                 console.error("API_KEY is not configured.");
                 setMessages([{ role: 'model', text: "Sorry, the chatbot is not configured correctly. Please contact the site owner." }]);
                 return;
